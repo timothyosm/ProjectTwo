@@ -1,7 +1,8 @@
 :pancakes: #Stack
-  -Bootstrap
-  -AWS Mysql
-  -Sequelize
-  -node.js
-  -Express
-  -Heroku  
+    -Bootstrap
+    -AWS Mysql
+    -Sequelize
+    -node.js
+    -Express
+    -Heroku
+    -Firebase
