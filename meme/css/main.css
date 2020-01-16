@@ -36,6 +36,14 @@ body {
   font-size: 45px;
 }
 
+#box1 {
+  min-height: 150px;
+  height: 100%;
+  /* border: 3px dashed #dee2e6; */
+  font-size: 1.2rem;
+}
+
+
 /* File Input */
 .inputfile {
   width: 0.1px;
