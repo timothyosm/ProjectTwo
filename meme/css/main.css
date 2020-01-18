@@ -74,6 +74,8 @@ h5 {
 .gallery {
   padding: 1px;
   float: left;
+  overflow: scroll;
+  overflow-y: hidden;
 }
 
 .gallery img {
