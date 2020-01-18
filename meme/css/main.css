@@ -48,7 +48,7 @@ body {
 
 .neon-wrapper {
   display: inline-flex;
-  filter: brightness(200%);
+  filter: brightness(250%);
 }
 
 .txt::before {
@@ -72,14 +72,16 @@ h5 {
   font-size: 1.2rem;
 }
 .gallery {
-  margin: 10px 20px 20px;
+  padding: 1px;
   float: left;
 }
 
 .gallery img {
-  width: 230px;
+  width: 205px;
   padding: 5px;
   margin-right: 20px;
+  margin-left: 10px;
+  border: 1px dashed #dee2e6;
 }
 
 
