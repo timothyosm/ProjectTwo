@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/main.css" />
     <title>Meme Generator | Create Your Own Meme</title>
+    <link href="upload_style.css" type="text/css" rel="stylesheet" />
+    
   </head>
 
   <body class="bg-body">
@@ -102,6 +104,19 @@
                 Upload Image
               </div>
             </label>
+            <!---->
+<div id="wrapper">
+  <div id="text_div">
+    <form method="post" action="upload_image.php">
+      <input type="text" name="img_url" placeholder="Enter Image URL" />
+      <input type="submit" name="get_image" value="Submit" />
+    </form>
+  </div>
+</div>
+
+
+
+            <!---->
 
             <div class="text-center mb-2" style="font-size: 1.1rem;">
               or
@@ -287,6 +302,8 @@ class="row mx-0 mb-5 py-4 bg-white border border-light rounded shadow"
         </div>
       </div>
     </div>
+
+    
 
     <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
     <script src="js/main.js"></script>
