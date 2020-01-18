@@ -20,21 +20,68 @@ body {
   }
 }
 
-.text-muted {
-  
-}
+/* .neon-wrapper { */
+  /* font-weight: 500;
+  letter-spacing: 2px; */
+  /* font-family: 'Nunito', sans-serif; */
+  /* -webkit-text-stroke: 1px rgb(255, 255, 255); */
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+/* } */
 
-#fileName {
-  
-}
-
-.page-title {
+.wrapper {
   font-weight: 500;
   letter-spacing: 2px;
-  font-family: 'Nunito', sans-serif;
-  /* -webkit-text-stroke: 1px rgb(255, 255, 255); */
-  font-size: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.txt {
+  color: #aeb6fcb4;
+  font-size: 60px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+}
+
+.neon-wrapper {
+  display: inline-flex;
+  filter: brightness(200%);
+}
+
+.txt::before {
+  content: 'Meme Generator';
+  position: absolute;
+  mix-blend-mode: difference;
+  filter: blur(1px);
+}
+
+
+
+/* Meme Gallery */
+h5 {
+  margin: 10px;
+}
+
+#box1 {
+  min-height: 150px;
+  height: 100%;
+  /* border: 3px dashed #dee2e6; */
+  font-size: 1.2rem;
+}
+.gallery {
+  margin: 10px 20px 20px;
+  float: left;
+}
+
+.gallery img {
+  width: 230px;
+  padding: 5px;
+  margin-right: 20px;
+}
+
 
 /* File Input */
 .inputfile {
