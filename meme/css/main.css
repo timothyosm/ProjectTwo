@@ -11,7 +11,11 @@ body {
 }
 
 .bg-body {
-  background-image:linear-gradient(110.1598456064869deg, rgba(248, 198, 215,1) 6.140625%,rgba(175, 233, 249,1) 95.51562499999999%);
+  background-image: linear-gradient(
+    110.1598456064869deg,
+    rgba(248, 198, 215, 1) 6.140625%,
+    rgba(175, 233, 249, 1) 95.51562499999999%
+  );
 }
 
 @media screen and (min-width: 1200px) {
@@ -21,11 +25,11 @@ body {
 }
 
 /* .neon-wrapper { */
-  /* font-weight: 500;
+/* font-weight: 500;
   letter-spacing: 2px; */
-  /* font-family: 'Nunito', sans-serif; */
-  /* -webkit-text-stroke: 1px rgb(255, 255, 255); */
-  /* display: flex;
+/* font-family: 'Nunito', sans-serif; */
+/* -webkit-text-stroke: 1px rgb(255, 255, 255); */
+/* display: flex;
   align-items: center;
   justify-content: center; */
 /* } */
@@ -52,13 +56,11 @@ body {
 }
 
 .txt::before {
-  content: 'Meme Generator';
+  content: "Meme Generator";
   position: absolute;
   mix-blend-mode: difference;
   filter: blur(1px);
 }
-
-
 
 /* Meme Gallery */
 h5 {
@@ -83,7 +85,6 @@ h5 {
   margin-left: 10px;
   border: 1px dashed #dee2e6;
 }
-
 
 /* File Input */
 .inputfile {
@@ -197,11 +198,12 @@ input[type="color"],
   color: black;
 }
 
-
-
 .btn-primary:hover {
-  
-  background-image:linear-gradient(110.1598456064869deg, rgba(250, 143, 191,1) 6.140625%,rgba(138, 176, 250,1) 95.51562499999999%);
+  background-image: linear-gradient(
+    110.1598456064869deg,
+    rgba(250, 143, 191, 1) 6.140625%,
+    rgba(138, 176, 250, 1) 95.51562499999999%
+  );
 }
 
 .btn:disabled {
