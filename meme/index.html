@@ -7,14 +7,10 @@
     <meta name="theme-color" content="#ffffff" />
     <link rel="manifest" href="manifest.json" />
     <link rel="icon" sizes="192x192" href="launcher-icon-4x.png?v=1" />
-    <!-- Font -->
     <link
       href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600"
       rel="stylesheet"
     />
-    <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Patrick+Hand&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/main.css" />
     <title>Meme Generator | Create Your Own Meme</title>
@@ -41,11 +37,11 @@
           </h1>
 
           <p class="text-muted" style="font-size: 1rem;">
-            Create Your Own Meme!
+            Easily Create Your Own Meme
           </p>
 
           <a
-            href="https://github.com/timothyosm/ProjectTwo/pull/2"
+            href="https://github.com/timothyosm/ProjectTwo"
             class="btn btn-outline-dark rounded-pill"
             target="_blank"
             rel="noopener"
@@ -81,7 +77,7 @@
               <span class="text-muted">
                 <a href="#" data-trigger="file-upload">Upload An Image</a> or
                 <a href="#" data-trigger="photo-capture">Take A Photo</a> to
-                generate your meme.
+                generate your meme
               </span>
             </div>
           </div>
@@ -102,14 +98,13 @@
                   width="20"
                   alt="Upload image"
                 />
-                Upload image
+                Upload Image
               </div>
             </label>
 
             <div class="text-center mb-2" style="font-size: 1.1rem;">
               or
             </div>
-            
 
             <button
               class="btn btn-primary btn-block py-2 d-flex align-items-center justify-content-center"
@@ -125,7 +120,7 @@
             </button>
           </div>
 
-          
+          <div id="inputsContainer"></div>
 
           <div class="clearfix mt-3">
             <button
@@ -143,10 +138,9 @@
                   d="M416 277.333H277.333V416h-42.666V277.333H96v-42.666h138.667V96h42.666v138.667H416v42.666z"
                 />
               </svg>
-              Add Additional Text Box
+              Add An Additional Text Box
             </button>
           </div>
-
 
           <button
             type="button"
@@ -160,29 +154,7 @@
         </div>
       </div>
 
-      <!-- Box underneath -->
-
-<div
-class="row mx-0 mb-5 py-4 bg-white border border-light rounded shadow"
->
-<div class="col-lg-8 mb-3 mb-lg-0">
-  <canvas id="canvas" class="canvas border shadow-sm d-none"></canvas>
-
-  <div id="box1" class="h-100">
-    <div
-      class="box"
-    >
-      
-    </div>
-  </div>
-</div>
-
-  
-</div>
-</div>
-
-
-
+     
 
     <div
       class="modal fade"
@@ -195,7 +167,7 @@ class="row mx-0 mb-5 py-4 bg-white border border-light rounded shadow"
       <div class="modal-dialog modal-lg shadow-lg">
         <div class="modal-content rounded-0">
           <div class="modal-header">
-            <h5 class="modal-title">Capture image</h5>
+            <h5 class="modal-title">Capture Image</h5>
             <button
               type="button"
               class="close"
@@ -275,10 +247,10 @@ class="row mx-0 mb-5 py-4 bg-white border border-light rounded shadow"
                 <img
                   src="assets/icons/save.svg"
                   width="20"
-                  alt="Generate Meme"
+                  alt="Generate meme"
                   class="mr-1"
                 />
-                Download Meme
+                Download
               </a>
             </p>
           </div>
