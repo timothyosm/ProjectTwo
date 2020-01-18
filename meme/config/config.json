@@ -1,0 +1,27 @@
+{
+    "development": {
+      "username": "admin",
+      "password": "Password.1",
+      "database": "database-1",
+      "host": "database-1.cusx8npasj4e.us-east-2.rds.amazonaws.com",
+      "port": 3306,
+      "dialect": "mysql"
+    },
+    "test": {
+      "username": "admin",
+      "password": "Password.1",
+      "database": "database-1",
+      "host": "database-1.cusx8npasj4e.us-east-2.rds.amazonaws.com",
+      "port": 3306,
+      "dialect": "mysql"
+    },
+    "production": {
+      "username": "admin",
+      "password": "Password.1",
+      "database": "database-1",
+      "host": "database-1.cusx8npasj4e.us-east-2.rds.amazonaws.com",
+      "port": 3306,
+      "dialect": "mysql"
+    }
+  }
+  
