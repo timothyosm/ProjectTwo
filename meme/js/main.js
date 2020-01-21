@@ -176,6 +176,7 @@
     const image = new Image();
     image.addEventListener("load", onImageLoaded);
     image.src = canvas.toDataURL();
+    console.log(image.src);
 
     stopVideoStreaming(video);
   }

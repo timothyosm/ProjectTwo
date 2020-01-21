@@ -1,14 +1,19 @@
 var db = require("../models");
+const uuidv4 = require("uuid/v4");
 
 module.exports = function(app) {
   app.get("/plsdownload", (req, res) => {
     const http = require("http");
     const fs = require("fs");
+    const imageId = uuidv4();
+    const fileName = "" + imageId + ".png";
 
-    const file = fs.createWriteStream(req.body.fileName);
+    const file = fs.createWriteStream(fileName, "base64");
     const request = http.get(req.body.link, function(response) {
       response.pipe(file);
-      res.end();
+      res.json({
+        imageId
+      });
     });
   });
 
