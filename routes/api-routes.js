@@ -1,14 +1,22 @@
-
 var db = require("../models");
 
 module.exports = function(app) {
+  app.get("/plsdownload", (req, res) => {
+    const http = require("http");
+    const fs = require("fs");
+
+    const file = fs.createWriteStream(req.body.fileName);
+    const request = http.get(req.body.link, function(response) {
+      response.pipe(file);
+    });
+    res.end();
+  });
 
   // GET route for getting all of the posts
   app.get("/api/posts/", function(req, res) {
-    db.Post.findAll({})
-      .then(function(dbPost) {
-        res.json(dbPost);
-      });
+    db.Post.findAll({}).then(function(dbPost) {
+      res.json(dbPost);
+    });
   });
 
   // Get route for returning posts of a specific category
@@ -17,10 +25,9 @@ module.exports = function(app) {
       where: {
         category: req.params.category
       }
-    })
-      .then(function(dbPost) {
-        res.json(dbPost);
-      });
+    }).then(function(dbPost) {
+      res.json(dbPost);
+    });
   });
 
   // Get route for retrieving a single post
@@ -29,10 +36,9 @@ module.exports = function(app) {
       where: {
         id: req.params.id
       }
-    })
-      .then(function(dbPost) {
-        res.json(dbPost);
-      });
+    }).then(function(dbPost) {
+      res.json(dbPost);
+    });
   });
 
   // POST route for saving a new post
@@ -42,10 +48,9 @@ module.exports = function(app) {
       title: req.body.title,
       body: req.body.body,
       category: req.body.category
-    })
-      .then(function(dbPost) {
-        res.json(dbPost);
-      });
+    }).then(function(dbPost) {
+      res.json(dbPost);
+    });
   });
 
   // DELETE route for deleting posts
@@ -54,22 +59,19 @@ module.exports = function(app) {
       where: {
         id: req.params.id
       }
-    })
-      .then(function(dbPost) {
-        res.json(dbPost);
-      });
+    }).then(function(dbPost) {
+      res.json(dbPost);
+    });
   });
 
   // PUT route for updating posts
   app.put("/api/posts", function(req, res) {
-    db.Post.update(req.body,
-      {
-        where: {
-          id: req.body.id
-        }
-      })
-      .then(function(dbPost) {
-        res.json(dbPost);
-      });
+    db.Post.update(req.body, {
+      where: {
+        id: req.body.id
+      }
+    }).then(function(dbPost) {
+      res.json(dbPost);
+    });
   });
 };
