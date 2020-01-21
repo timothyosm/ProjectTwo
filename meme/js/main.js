@@ -133,6 +133,31 @@
     canvasPlaceholder.classList.add("d-none");
   }
 
+  $(".clickable-image").click(function() {
+    var source = $(this).attr('src');
+    source = source.replace(/^https:\/\//i, 'http://');
+    console.log(source);
+    newFileSelect(source);
+  });
+
+  async function newFileSelect(fileName) {
+    const file = await fetch(fileName).then(r => r.blob());
+    const image = new Image();
+    const reader = new FileReader();
+
+    if (file && file.name) {
+      fileInputName.textContent = file.name;
+    }
+
+    reader.addEventListener("load", function(evt) {
+      const data = evt.target.result;
+      image.addEventListener("load", onImageLoaded);
+      image.src = data;
+    });
+
+    reader.readAsDataURL(file);
+  }
+
   function handleFileSelect(evt) {
     const image = new Image();
     const file = evt.target.files[0];

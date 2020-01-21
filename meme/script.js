@@ -1,5 +1,5 @@
 var mod_screen = function() {
-    
+
   /* Cleanup extra divs that were added in previous resizing  */
   $('.item').each( function (){
       $(this).children('div:not(:first)').remove();  
