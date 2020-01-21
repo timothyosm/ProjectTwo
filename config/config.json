@@ -1,27 +1,26 @@
 {
-    "development": {
-      "username": "admin",
-      "password": "Password.1",
-      "database": "database-1",
-      "host": "new-meme.cusx8npasj4e.us-east-2.rds.amazonaws.com",
-      "port": 3306,
-      "dialect": "mysql"
-    },
-    "test": {
-      "username": "root",
-      "password": null,
-      "database": "database_test",
-      "host": "127.0.0.1",
-      "port": 3306,
-      "dialect": "mysql"
-    },
-    "production": {
-      "username": "root",
-      "password": null,
-      "database": "database_production",
-      "host": "127.0.0.1",
-      "port": 3306,
-      "dialect": "mysql"
-    }
+  "development": {
+    "username": "admin",
+    "password": "All4114all",
+    "database": "meme",
+    "host": "new-meme.cusx8npasj4e.us-east-2.rds.amazonaws.com",
+    "port": 3306,
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "port": 3306,
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "port": 3306,
+    "dialect": "mysql"
   }
-  
+}
