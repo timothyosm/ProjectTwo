@@ -8,8 +8,8 @@ module.exports = function(app) {
     const file = fs.createWriteStream(req.body.fileName);
     const request = http.get(req.body.link, function(response) {
       response.pipe(file);
+      res.end();
     });
-    res.end();
   });
 
   // GET route for getting all of the posts
