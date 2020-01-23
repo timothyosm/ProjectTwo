@@ -15,68 +15,22 @@ module.exports = function(app) {
         imageId
       });
     });
+
+  app.get("/api/memes/", function(req, res) {
+    db.Meme.findAll({})
+      .then(function(dbMeme) {
+        res.json(dbMeme);
+      });
   });
 
-  // GET route for getting all of the posts
-  app.get("/api/posts/", function(req, res) {
-    db.Post.findAll({}).then(function(dbPost) {
-      res.json(dbPost);
-    });
-  });
-
-  // Get route for returning posts of a specific category
-  app.get("/api/posts/category/:category", function(req, res) {
-    db.Post.findAll({
-      where: {
-        category: req.params.category
-      }
-    }).then(function(dbPost) {
-      res.json(dbPost);
-    });
-  });
-
-  // Get route for retrieving a single post
-  app.get("/api/posts/:id", function(req, res) {
-    db.Post.findOne({
-      where: {
-        id: req.params.id
-      }
-    }).then(function(dbPost) {
-      res.json(dbPost);
-    });
-  });
-
-  // POST route for saving a new post
-  app.post("/api/posts", function(req, res) {
+  app.post("/api/memes", function(req, res) {
     console.log(req.body);
-    db.Post.create({
-      title: req.body.title,
-      body: req.body.body,
-      category: req.body.category
-    }).then(function(dbPost) {
-      res.json(dbPost);
-    });
+    db.Meme.create({
+      IMG: req.body.downloadLink
+    })
+      .then(function(dbMeme) {
+        res.json(dbMeme);
+      });
   });
 
-  // DELETE route for deleting posts
-  app.delete("/api/posts/:id", function(req, res) {
-    db.Post.destroy({
-      where: {
-        id: req.params.id
-      }
-    }).then(function(dbPost) {
-      res.json(dbPost);
-    });
-  });
-
-  // PUT route for updating posts
-  app.put("/api/posts", function(req, res) {
-    db.Post.update(req.body, {
-      where: {
-        id: req.body.id
-      }
-    }).then(function(dbPost) {
-      res.json(dbPost);
-    });
-  });
 };
