@@ -1,11 +1,13 @@
 
 var express = require("express");
+var cors = require("cors");
 
 var app = express();
 var PORT = process.env.PORT || 8080;
 
 var db = require("./models");
 
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
