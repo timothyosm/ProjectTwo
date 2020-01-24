@@ -1,18 +1,15 @@
 module.exports = function(sequelize, DataTypes) {
   var Meme = sequelize.define("Meme", {
-    img: {
-      type: DataTypes.BLOB,
-      allowNull: false,
-      validate: {
-        len: [1]
-      }
-    },
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true
+  },
+    img: DataTypes.TEXT('long'),
+    
     score: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      validate: {
-        len: [1]
-      }
+      defaultValue: 0
     }
   });
   return Meme;
