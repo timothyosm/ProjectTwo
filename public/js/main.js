@@ -7,6 +7,7 @@
   const cancelUserMediaBtn = document.getElementById("cancelUserMediaBtn");
   const captureUserMediaBtn = document.getElementById("captureUserMediaBtn");
   const video = document.getElementById("video");
+  const linkInput = document.getElementById("image_link_submit");
   const canvas = document.getElementById("canvas");
   const canvasPlaceholder = document.getElementById("canvasPlaceholder");
   const ctx = canvas.getContext("2d");
