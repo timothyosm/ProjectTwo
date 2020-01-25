@@ -133,22 +133,36 @@
     canvasPlaceholder.classList.add("d-none");
   }
 
-  function handleFileSelect(evt) {
+  linkInput.addEventListener("click", handleURLUpload);
+
+  function handleURLUpload() {
+    const url = urlFile.value;
     const image = new Image();
-    const file = evt.target.files[0];
-    const reader = new FileReader();
+    image.src = url;
 
-    if (file && file.name) {
-      fileInputName.textContent = file.name;
-    }
+    image.addEventListener("load", async _ => {
+      const tempCanvas = document.createElement("canvas");
+      tempCanvas.width = image.width;
+      tempCanvas.height = image.height;
 
-    reader.addEventListener("load", function(evt) {
-      const data = evt.target.result;
+      const tempCtx = tempCanvas.getContext("2d");
+      tempCtx.drawImage(image, 0, 0);
+
+      const result = await fetch("/download", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify({
+          link: url
+        })
+      });
+
+      const response = await result.json();
+
       image.addEventListener("load", onImageLoaded);
-      image.src = data;
+      image.src = response.path;
     });
-
-    reader.readAsDataURL(file);
   }
 
   function requestGetUserMedia() {

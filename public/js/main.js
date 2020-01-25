@@ -99,21 +99,49 @@
     toggleModal(downloadModal, true);
 
     // var convMeme = JSON.stringify(downloadLink)
-    var convMeme = downloadLink
+    var convMeme = downloadLink;
 
     var newMeme = {
-      img: convMeme,
+      img: convMeme
     };
-
 
     // $.post("/api/memes", newMeme)
     $.post("/api/memes", newMeme, function(data) {
       console.log(data);
-      });
+    });
   }
 
+  linkInput.addEventListener("click", handleURLUpload);
 
-  
+  function handleURLUpload() {
+    const url = urlFile.value;
+    const image = new Image();
+    image.src = url;
+
+    image.addEventListener("load", async _ => {
+      const tempCanvas = document.createElement("canvas");
+      tempCanvas.width = image.width;
+      tempCanvas.height = image.height;
+
+      const tempCtx = tempCanvas.getContext("2d");
+      tempCtx.drawImage(image, 0, 0);
+
+      const result = await fetch("/download", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify({
+          link: url
+        })
+      });
+
+      const response = await result.json();
+
+      image.addEventListener("load", onImageLoaded);
+      image.src = response.path;
+    });
+  }
 
   function onImageLoaded(evt) {
     const MAX_WIDTH = 800;
@@ -158,7 +186,7 @@
       fileInputName.textContent = file.name;
     }
 
-    reader.addEventListener("load", function (evt) {
+    reader.addEventListener("load", function(evt) {
       const data = evt.target.result;
       image.addEventListener("load", onImageLoaded);
       image.src = data;
@@ -323,20 +351,20 @@
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
 
-    options.forEach(function (item, index) {
+    options.forEach(function(item, index) {
       ctx.font = `${item.fontSize}px ${item.font}`;
 
       const multiplier = index + 1;
       const lineHeight = ctx.measureText("M").width + 20;
       const xPos =
-        item.textAlign === "center" || !item.textAlign ?
-        canvas.width / 2 :
-        item.textAlign === "left" ?
-        0 :
-        canvas.width;
-      const shadowBlur = !Number.isNaN(Number(item.shadowBlur)) ?
-        Number(item.shadowBlur) :
-        3;
+        item.textAlign === "center" || !item.textAlign
+          ? canvas.width / 2
+          : item.textAlign === "left"
+          ? 0
+          : canvas.width;
+      const shadowBlur = !Number.isNaN(Number(item.shadowBlur))
+        ? Number(item.shadowBlur)
+        : 3;
       const text = item.allCaps === true ? item.text.toUpperCase() : item.text;
 
       ctx.fillStyle = item.fillColor;
@@ -353,9 +381,9 @@
       ctx.fillText(
         text,
         xPos + Number(item.offsetX),
-        index === 1 ?
-        canvas.height - 20 + Number(item.offsetY) :
-        lineHeight * (multiplier - 1 || 1) + Number(item.offsetY)
+        index === 1
+          ? canvas.height - 20 + Number(item.offsetY)
+          : lineHeight * (multiplier - 1 || 1) + Number(item.offsetY)
       );
 
       ctx.restore();
