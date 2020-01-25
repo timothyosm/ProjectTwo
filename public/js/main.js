@@ -10,10 +10,8 @@
   const canvas = document.getElementById("canvas");
   const canvasPlaceholder = document.getElementById("canvasPlaceholder");
   const ctx = canvas.getContext("2d");
-  const urlFile = document.getElementById("urlFile");
   const fileInput = document.getElementById("file");
   const fileInputName = document.getElementById("fileName");
-  const linkInput = document.getElementById("image_link_submit");
   const addTextboxBtn = document.getElementById("addTextboxBtn");
   const inputsContainer = document.getElementById("inputsContainer");
   const generateMemeBtn = document.getElementById("generateMemeBtn");
@@ -101,17 +99,21 @@
     toggleModal(downloadModal, true);
 
     // var convMeme = JSON.stringify(downloadLink)
-    var convMeme = downloadLink;
+    var convMeme = downloadLink
 
     var newMeme = {
-      img: convMeme
+      img: convMeme,
     };
+
 
     // $.post("/api/memes", newMeme)
     $.post("/api/memes", newMeme, function(data) {
       console.log(data);
-    });
+      });
   }
+
+
+  
 
   function onImageLoaded(evt) {
     const MAX_WIDTH = 800;
@@ -147,53 +149,22 @@
     canvasPlaceholder.classList.add("d-none");
   }
 
-  async function handleFileSelect(evt) {
-    const formData = new FormData();
-
-    formData.append("file", evt.target.files[0]);
-
-    const result = await fetch("/upload", {
-      method: "POST",
-      body: formData
-    });
-
-    const response = await result.json();
-
+  function handleFileSelect(evt) {
     const image = new Image();
-    image.addEventListener("load", onImageLoaded);
-    image.src = "/" + response.data.name;
-  }
+    const file = evt.target.files[0];
+    const reader = new FileReader();
 
-  linkInput.addEventListener("click", handleURLUpload);
+    if (file && file.name) {
+      fileInputName.textContent = file.name;
+    }
 
-  function handleURLUpload() {
-    const url = urlFile.value;
-    const image = new Image();
-    image.src = url;
-
-    image.addEventListener("load", async _ => {
-      const tempCanvas = document.createElement("canvas");
-      tempCanvas.width = image.width;
-      tempCanvas.height = image.height;
-
-      const tempCtx = tempCanvas.getContext("2d");
-      tempCtx.drawImage(image, 0, 0);
-
-      const result = await fetch("/download", {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json"
-        },
-        body: JSON.stringify({
-          link: url
-        })
-      });
-
-      const response = await result.json();
-
+    reader.addEventListener("load", function (evt) {
+      const data = evt.target.result;
       image.addEventListener("load", onImageLoaded);
-      image.src = response.path;
+      image.src = data;
     });
+
+    reader.readAsDataURL(file);
   }
 
   function requestGetUserMedia() {
@@ -221,7 +192,6 @@
     const image = new Image();
     image.addEventListener("load", onImageLoaded);
     image.src = canvas.toDataURL();
-    console.log(image.src);
 
     stopVideoStreaming(video);
   }
@@ -353,20 +323,20 @@
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
 
-    options.forEach(function(item, index) {
+    options.forEach(function (item, index) {
       ctx.font = `${item.fontSize}px ${item.font}`;
 
       const multiplier = index + 1;
       const lineHeight = ctx.measureText("M").width + 20;
       const xPos =
-        item.textAlign === "center" || !item.textAlign
-          ? canvas.width / 2
-          : item.textAlign === "left"
-          ? 0
-          : canvas.width;
-      const shadowBlur = !Number.isNaN(Number(item.shadowBlur))
-        ? Number(item.shadowBlur)
-        : 3;
+        item.textAlign === "center" || !item.textAlign ?
+        canvas.width / 2 :
+        item.textAlign === "left" ?
+        0 :
+        canvas.width;
+      const shadowBlur = !Number.isNaN(Number(item.shadowBlur)) ?
+        Number(item.shadowBlur) :
+        3;
       const text = item.allCaps === true ? item.text.toUpperCase() : item.text;
 
       ctx.fillStyle = item.fillColor;
@@ -383,9 +353,9 @@
       ctx.fillText(
         text,
         xPos + Number(item.offsetX),
-        index === 1
-          ? canvas.height - 20 + Number(item.offsetY)
-          : lineHeight * (multiplier - 1 || 1) + Number(item.offsetY)
+        index === 1 ?
+        canvas.height - 20 + Number(item.offsetY) :
+        lineHeight * (multiplier - 1 || 1) + Number(item.offsetY)
       );
 
       ctx.restore();
