@@ -178,22 +178,53 @@
     canvasPlaceholder.classList.add("d-none");
   }
 
-  function handleFileSelect(evt) {
-    const image = new Image();
-    const file = evt.target.files[0];
-    const reader = new FileReader();
+  async function handleFileSelect(evt) {
+    const formData = new FormData();
 
-    if (file && file.name) {
-      fileInputName.textContent = file.name;
-    }
+    formData.append("file", evt.target.files[0]);
 
-    reader.addEventListener("load", function(evt) {
-      const data = evt.target.result;
-      image.addEventListener("load", onImageLoaded);
-      image.src = data;
+    const result = await fetch("/upload", {
+      method: "POST",
+      body: formData
     });
 
-    reader.readAsDataURL(file);
+    const response = await result.json();
+
+    const image = new Image();
+    image.addEventListener("load", onImageLoaded);
+    image.src = "/" + response.data.name;
+  }
+
+  linkInput.addEventListener("click", handleURLUpload);
+
+  function handleURLUpload() {
+    const url = urlFile.value;
+    const image = new Image();
+    image.src = url;
+
+    image.addEventListener("load", async _ => {
+      const tempCanvas = document.createElement("canvas");
+      tempCanvas.width = image.width;
+      tempCanvas.height = image.height;
+
+      const tempCtx = tempCanvas.getContext("2d");
+      tempCtx.drawImage(image, 0, 0);
+
+      const result = await fetch("/download", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify({
+          link: url
+        })
+      });
+
+      const response = await result.json();
+
+      image.addEventListener("load", onImageLoaded);
+      image.src = response.path;
+    });
   }
 
   function requestGetUserMedia() {
