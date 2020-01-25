@@ -24,15 +24,6 @@ body {
   }
 }
 
-/* .neon-wrapper { */
-/* font-weight: 500;
-  letter-spacing: 2px; */
-/* font-family: 'Nunito', sans-serif; */
-/* -webkit-text-stroke: 1px rgb(255, 255, 255); */
-/* display: flex;
-  align-items: center;
-  justify-content: center; */
-/* } */
 
 .wrapper {
   font-weight: 500;
@@ -83,6 +74,12 @@ body {
 /* Meme Gallery */
 h5 {
   margin: 10px;
+}
+
+#dank {
+  color: #cba5eeb4;
+  filter: brightness(150%);
+  text-align: center;
 }
 
 #box1 {
