@@ -20,6 +20,9 @@
 
     <title>Meme Generator | Create Your Own Meme</title>
 
+    <!-- Link to submit button -->
+    <link href="upload_style.css" type="text/css" rel="stylesheet" />
+    <canvas id="myCanvas"></canvas>
  
     
   </head>
@@ -115,9 +118,9 @@
 <!-- Search Bar -->
 <div id="wrapper">
   <div id="text_div">
-    <form method="post" action="upload_image.php">
-      <input class="col-lg-7 col-sm-8 bg-light py-2 px-3 border shadow-sm" type="text" name="img_url" placeholder="Enter Image URL" />
-      <input id="submit" class="col-lg-5 col-sm-4 btn btn-primary border shadow-sm align-items-center" alt="submit" type="submit" name="get_image" value="Submit" />
+    <form>
+      <input class="col-lg-7 col-sm-8 bg-light py-2 px-3 border shadow-sm" type="text" name="img_url" id="urlFile" placeholder="Enter Image URL" />
+      <input id="image_link_submit" class="col-lg-5 col-sm-4 btn btn-primary border shadow-sm align-items-center" alt="submit" type="button" name="get_image" value="Submit" />
       <!-- <img
                   class="mr-2"
                   src="assets/icons/login.svg"
