@@ -1,2 +1,4 @@
 .gitignore
 uploads/
+node_modules
+package-lock
